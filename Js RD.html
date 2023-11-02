@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(to left bottom, rgb(247, 195, 203),rgb(161, 161, 194),rgb(247, 195, 203));
+    }
+    #form {
+        width: 400px;
+        margin: 20vh auto 0 auto;
+        background: linear-gradient(to left bottom, rgb(247, 195, 203),rgb(161, 161, 194),rgb(247, 195, 203));
+        border-radius: 5px;
+        padding: 30px;
+    }
+    h1 {
+       text-align: center;
+       color: blueviolet;
+    }
+    .frameWork{
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .frameWork input {
+        border-radius: 5px;
+        font-size: 15px;
+        margin-top: 5px;
+        padding: 10px;
+    }
+    button{
+        background-color: lightskyblue;
+        padding: 7px;
+        margin-left: 155px;
+        margin-bottom: 10px;
+        border: 2px solid lightskyblue;
+        border-radius: 5px;
+    }
+    #result {
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 100px;
+        display: flex;
+        justify-content: center;
+        border: 1px solid  lightskyblue;
+        color: black;
+        background-color:  white;
+    } 
+</style>
+<body>
+    <form action="" id="form">
+        <h1>RD Calculator</h1>
+        <div class="frameWork">
+          <label for="principalAmount">Principal Amount(₹)</label>
+          <input type="text" id="principalAmount" name="principalAmount" placeholder="Enter the principal amount" />
+          <div class="error"></div>
+        </div>
+        <div class="frameWork">
+            <label for="interestRate">Interest Rate(%)</label>
+            <input type="text" id="interestRate" name="interestRate"  placeholder="Enter the annual interest rate"/>
+            <div class="error"></div>
+        </div>
+        <div class="frameWork">
+            <label for="timeMonths">Time(Months)</label>
+            <input type="text" id="timeMonths" name="timeMonths" placeholder="Enter the number of months" />
+            <div class="error"></div>
+        </div>
+        <div>
+            <button onclick="calculate()">Calculate</button>
+        </div>
+        <div>
+            <p id="result"></p>
+        </div>
+    </form>    
+    <script>
+        function calculate(){
+            let principalAmount=Number(document.getElementById("principalAmount").value);
+            let interestRate=Number(document.getElementById("interestRate").value);
+            let timeMonths=Number(document.getElementById("timeMonths").value);
+            const rate = interestRate/100/12;
+            const rda=principalAmount*(1+rate*timeMonths);
+            let rdaa=Math.trunc(rda);
+            document.getElementById("result").textContent="Your RD is ₹:"+rdaa;
+            }
+    </script>
+</body>
+</html>
